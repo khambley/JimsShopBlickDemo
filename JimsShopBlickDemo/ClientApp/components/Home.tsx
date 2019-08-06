@@ -58,21 +58,33 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
 
     //Returns the HTML to the render() method.
     private renderProductTable(prodList: ProductData[]) {
-        return <div className='row'>
-            <div className='col-md-4'>
-                <div className="media">
-                    <div className="media-left">
-                        <a href=''>
-                            <img className="media-object" src="..." alt="..." />
-                        </a>
-                    </div>
-                        <div className="media-body">
-                            <h4 className="media-heading">Media heading</h4>
-                            <Link to="/">Home</Link>
-                        </div>
-                </div>
-            </div>
-        </div>;
+        return <table className='table'>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {prodList.map(prod =>
+                        <tr key={prod.productId}>
+                            <td></td>
+                        <td><img className="thumb" src={'/images/' + prod.productImage} alt={prod.productName} /></td>
+                            <td>{prod.productName}</td>
+                            <td>{prod.productDescription}</td>
+                            <td>{prod.productPrice}</td>
+                            <td>
+                            <a className="action" onClick={(id) => this.handleEdit(prod.productId)}>Edit</a>  |
+                            <a className="action" onClick={(id) => this.handleDelete(prod.productId)}>Delete</a>
+                            </td>
+                        </tr>
+                    )}
+                </tbody>
+            </table>;
     }
 }
 

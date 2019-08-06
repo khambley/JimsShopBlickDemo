@@ -31,6 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\pencil001.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\ProductListItem.tsx" />
   </ItemGroup>
 

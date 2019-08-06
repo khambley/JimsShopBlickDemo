@@ -8,8 +8,7 @@ using JimsShopBlickDemo.Models;
 
 namespace JimsShopBlickDemo.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Product")]
+    
     public class ProductController : Controller
     {
         ProductDataAccessLayer objProduct = new ProductDataAccessLayer();

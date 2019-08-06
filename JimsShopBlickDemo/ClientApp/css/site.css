@@ -22,6 +22,9 @@
     .margin-top {
         margin-top: 50px;
     }
+    .thumb {
+        max-height: 100px;
+    }
     .main-nav .navbar {
         border-radius: 0px;
         border-width: 0px;

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="axios" Version="0.16.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">
@@ -27,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\components\ProductListItem.tsx" />
+    <None Remove="ClientApp\components\CreateProduct.tsx" />
+    <None Remove="ClientApp\components\ProductDetails.tsx" />
+    <None Remove="ClientApp\components\UpdateProduct.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\components\ProductListItem.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\CreateProduct.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\ProductDetails.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\UpdateProduct.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

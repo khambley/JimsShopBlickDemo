@@ -21,6 +21,7 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
         // This binding is necessary to make "this" work in the callback  
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDetails = this.handleDetails.bind(this);
     }
 
     public render() {
@@ -30,9 +31,12 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
 
         return <div className='row'>
             <h1 className='text-center'>Welcome to Jim's Shop!</h1>
+            <p className='text-center'>Jim's sells pencils.</p>
+            <div className="col-md-9">
             <h2>Product List</h2>
             <p><Link to="/create">Create New</Link></p>
-            {contents}
+                {contents}
+            </div>
         </div>;
     }
     // Handle Delete request for an employee  
@@ -56,6 +60,10 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
         this.props.history.push("/product/edit/" + id);
     }
 
+    private handleDetails(id: number) {
+        this.props.history.push("/product/details/" + id);
+    }
+
     //Returns the HTML to the render() method.
     private renderProductTable(prodList: ProductData[]) {
         return <table className='table'>
@@ -63,8 +71,7 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
                     <tr>
                         <th></th>
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Description</th>
+                        <th>Title</th>
                         <th>Price</th>
                         
                     </tr>
@@ -73,10 +80,9 @@ export class Home extends React.Component<RouteComponentProps<{}>, HomeDataState
                     {prodList.map(prod =>
                         <tr key={prod.productId}>
                             <td></td>
-                        <td><img className="thumb" src={'/images/' + prod.productImage} alt={prod.productName} /></td>
-                            <td>{prod.productName}</td>
-                            <td>{prod.productDescription}</td>
-                            <td>{prod.productPrice}</td>
+                        <td><a onClick={(id) => this.handleDetails(prod.productId)}><img className="thumb" src={'/images/' + prod.productImage} alt={prod.productName} /></a></td>
+                        <td><a onClick={(id) => this.handleDetails(prod.productId)}>{prod.productTitle}</a></td>
+                            <td>${prod.productPrice.toFixed(2)}</td>
                             <td>
                             <a className="action" onClick={(id) => this.handleEdit(prod.productId)}>Edit</a>  |
                             <a className="action" onClick={(id) => this.handleDelete(prod.productId)}>Delete</a>
